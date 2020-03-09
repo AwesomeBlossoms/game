@@ -1,3 +1,14 @@
+######################################################################
+#
+#
+#
+#
+#
+#
+#
+#
+######################################################################
+
 
 from random import sample
 
@@ -32,21 +43,57 @@ Answers = ['Washington DC',
 key = list(zip(Questions, Answers))
 
 # Sample from key now instead of Questions
-s = sample(key, 4)
+# in each "s" tuple [0] is the question, [1] is the answer
+s = sample(key, 5)
 
 num_right = 0
+maze_size = 5
+chicken_pics = ['raw_chicken.jpg',
+                'egg_chicken.jfif',
+                'flour_chicken.jpg',
+                'egg_chicken.jfif',
+                'breading-chicken.jpg',
+                'pan_chicken.jfif',
+                ]
+
+chicken_stage = ['1) Raw Chicken',
+                 '2) Dipped in Egg',
+                 '3) Coated in Flour',
+                 '4) Dipped in Egg (again)',
+                 '5) Coated in Breading',
+                 '6) Cooking'
+                 ]
+
+stage = 0
 
 for i in s:
-    # in each "i" tuple [0] is the question, [1] is the answer
+
+    print("Your current stage is:")
+    print(chicken_stage[stage])
+    # Show picture
+    stage += 1
+    try:
+        input("Press enter to continue")
+    except SyntaxError:
+        pass
+    # Show and complete maze
+
+    print('')
     print(i[0])
     user_answer = input('Your Guess: ')
     if user_answer.lower() == i[1].lower():
-        print('Correct!!!')
+        print('Correct!')
+        print('')
         num_right += 1
     else:
         print('Not Correct')
+        print('')
 # Added a final fraction of correct statement
 print('{}/4 Questions Correct'.format(num_right))
+
+# If statement for win or loss
+# print 'congrats' or 'better luck next time'
+# show winning or losing picture
 
 
 
